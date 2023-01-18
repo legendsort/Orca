@@ -4,7 +4,7 @@ using namespace std;
 
 using DO = double;
 using pii = pair<int, int>;
-const DO pi = acosl(-1);
+const DO PI = acosl(-1);
 const DO eps = 1e-10;
 const DO inf = 1e18;
 const int NN = 1000111;
@@ -105,6 +105,13 @@ void input() {
 	gateways.push_back({tar, tar});
 }
 
+bool canPassSegments(point pre, point now, int L, int R) {
+	for(int i=L; i<=R; i++) {
+		if(isIntersect(now, pre, gateways[i].pt[0], gateways[i].pt[1]) == false) return false;
+	}
+	return true;
+}
+
 void solve() {
 	dp[0][0] = 0;
 	dp[0][1] = 0;
@@ -116,15 +123,7 @@ void solve() {
 			for(int k=i-1; k>=0; k--) {
 				for(int l=0; l<2; l++) {
 					point pre = gateways[k].pt[l];
-					bool passAll = true;
-					for(int p=i-1; p>=k; p--) {
-						
-						if(isIntersect(now, pre, gateways[p].pt[0], gateways[p].pt[1]) == false) {
-							passAll = false;
-							break;
-						}
-					}
-					if(passAll) {
+					if(canPassSegments(pre, now, k, i-1)) {
 						if(smin(dp[i][j], dp[k][l] + dist(pre, now))) {
 							prevState[i][j] = {k, l};
 						} 
