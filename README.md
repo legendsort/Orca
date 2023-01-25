@@ -44,11 +44,5 @@ Algorithms: Dynamic Programming, Computational Geometry, Graph, Greedy
 Idea: We only pass the endpoints of segments. It is the best solution.
 
 
----
-I think this position is an ideal for me as I have strong knowledge in Data Structure and Algorithm and I am very familiar with C/C++ and Python.
----
-
-I am looking forward to meeting your team and joining soon.
-====
 
 
